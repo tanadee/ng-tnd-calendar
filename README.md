@@ -1,6 +1,9 @@
-# OmssAdminWeb
+# Tnd Calendar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+
+## Build tnd-calendar
+Run `ng build tnd-calendar`. The distibute package will be in `package/tnd-calendar`
 
 ## Development server
 

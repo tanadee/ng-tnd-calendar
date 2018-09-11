@@ -1,0 +1,10 @@
+<div class="date-picker flex column">
+    <div class="flex row" *ngFor="let week of dateList">
+        <div class="grow no-basis flex row" *ngFor="let d of week" (click)="change(d)">
+            <div class="grow btn" [class.btn-primary]="d > 0" [class.disabled]="d <= 0" [class.selected]="d == date">
+                <span *ngIf="d > 0">{{formatter.formatDate(d,month,year)}}</span>
+                <span *ngIf="d <= 0">{{formatter.formatDate(-d,month,year)}}</span>
+            </div>
+        </div>
+    </div>
+</div>

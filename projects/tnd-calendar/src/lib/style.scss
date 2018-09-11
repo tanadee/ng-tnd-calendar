@@ -1,0 +1,27 @@
+.flex {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    &.column {
+        flex-direction: column;
+    }
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    >*{
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        &.grow{
+            flex-grow: 1;
+        }
+        &.no-basis{
+            flex-basis: 0;
+        }
+    }
+    &.center{
+        justify-content: center; //primary axis center
+        align-items: center; //secondary axis center
+    }
+}

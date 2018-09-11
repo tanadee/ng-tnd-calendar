@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "omss-admin-web": {
+    "lib-root": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/omss-admin-web",
+            "outputPath": "dist/lib-root",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "omss-admin-web:build"
+            "browserTarget": "lib-root:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "omss-admin-web:build:production"
+              "browserTarget": "lib-root:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "omss-admin-web:build"
+            "browserTarget": "lib-root:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "omss-admin-web-e2e": {
+    "lib-root-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "omss-admin-web:serve"
+            "devServerTarget": "lib-root:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "omss-admin-web:serve:production"
+              "devServerTarget": "lib-root:serve:production"
             }
           }
         },
@@ -121,7 +121,47 @@
           }
         }
       }
+    },
+    "tnd-calendar": {
+      "root": "projects/tnd-calendar",
+      "sourceRoot": "projects/tnd-calendar/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tnd-calendar/tsconfig.lib.json",
+            "project": "projects/tnd-calendar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/tnd-calendar/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tnd-calendar/src/test.ts",
+            "tsConfig": "projects/tnd-calendar/tsconfig.spec.json",
+            "karmaConfig": "projects/tnd-calendar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tnd-calendar/tsconfig.lib.json",
+              "projects/tnd-calendar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "omss-admin-web"
+  "defaultProject": "lib-root"
 }

@@ -1,0 +1,22 @@
+<div class="calendar flex column">
+    <div class="modeList flex row">
+        <div class="grow no-basis flex row">
+            <div class="btn btn-primary" (click)="setDate(date-1)">&lt;</div>
+            <div class="btn btn-primary grow" (click)="pickMode = 'date'" [class.selected]="pickMode == 'date'"><span>{{formatter.formatDate(date,month,year)}}</span></div>
+            <div class="btn btn-primary" (click)="setDate(date+1)">&gt;</div>
+        </div>
+        <div class="grow no-basis flex row">
+            <div class="btn btn-primary" (click)="setMonth(month-1)">&lt;</div>
+            <div class="btn btn-primary grow" (click)="pickMode = 'month'" [class.selected]="pickMode == 'month'"><span>{{formatter.formatMonth(date,month,year)}}</span></div>
+            <div class="btn btn-primary" (click)="setMonth(month+1)">&gt;</div>
+        </div>
+        <div class="grow no-basis flex row">
+            <div class="btn btn-primary" (click)="setYear(year-1)">&lt;</div>
+            <div class="btn btn-primary grow" (click)="pickMode = 'year'" [class.selected]="pickMode == 'year'"><span>{{formatter.formatYear(date,month,year)}}</span></div>
+            <div class="btn btn-primary" (click)="setYear(year+1)">&gt;</div>
+        </div>
+    </div>
+    <tnd-date-picker class="grow" *ngIf="pickMode == 'date'" [date]="date" (dateChange)="setDate($event)" [month]="month" (monthChange)="setMonth($event)" [year]="year" (yearChange)="setYear($event)" [format]="formatter"></tnd-date-picker>
+    <tnd-month-picker class="grow" *ngIf="pickMode == 'month'"  [month]="month" (monthChange)="setMonth($event)" [year]="year" (yearChange)="setYear($event)" [format]="formatter"></tnd-month-picker>
+    <tnd-year-picker class="grow" *ngIf="pickMode == 'year'" [year]="year" (yearChange)="setYear($event)" [format]="formatter"></tnd-year-picker>
+</div>

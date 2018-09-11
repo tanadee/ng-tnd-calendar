@@ -1,0 +1,9 @@
+<div class="flex column month-picker">
+    <div class="flex row" *ngFor="let week of monthList">
+        <div class="grow no-basis flex row" *ngFor="let m of week" (click)="change(m)">
+            <div class="grow btn btn-primary" [class.selected]="m == month">
+                <span>{{formatter.formatMonth(1,m,year)}}</span>
+            </div>
+        </div>
+    </div>
+</div>

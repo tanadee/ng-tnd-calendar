@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'omss-admin-web';
+  date:number = 1
+  month:number = 0
+  year:number = 1
 }
